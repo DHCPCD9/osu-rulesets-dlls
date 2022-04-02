@@ -38,7 +38,7 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "latest"
           prerelease: true
-          title: "Build ${{ GITHUB_RUN_ID }}" 
+          title: "Build ${{ github.GITHUB_RUN_ID }}" 
           files: |
             *.dll
     
