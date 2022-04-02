@@ -23,7 +23,7 @@ jobs:
       run: dotnet restore
       working-directory: ./osu
     - name: Build
-      run: dotnet build --no-restore --output out/
+      run: dotnet build -c Release --no-restore --output out/
       working-directory: ./osu/osu.Desktop
     - run: mkdir ~/upload
     - name: Copy all rulesets to upload folder
@@ -31,7 +31,7 @@ jobs:
       working-directory: ./osu/osu.Desktop/out/
       
     - name: zip files
-      run: zip -r upload ~/rulesets.zip
+      run: zip -r ~/rulesets.zip ~/upload 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.0.0
       with:
