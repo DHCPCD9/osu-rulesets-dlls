@@ -31,7 +31,7 @@ jobs:
       working-directory: ./osu/osu.Desktop/out/
       
     - name: zip files
-      run: zip -r ~/rulesets.zip ~/upload 
+      run: zip -r rulesets.zip upload 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.0.0
       with:
