@@ -25,20 +25,20 @@ jobs:
     - name: Build
       run: dotnet build -c Release --no-restore --output out/
       working-directory: ./osu/osu.Desktop
-    - run: mkdir ~/upload
+    - run: mkdir $GITHUB_WORKSPACE/upload
     - name: Copy all rulesets to upload folder
-      run: find . -name "osu.Game.Rulesets.*.dll" -print -exec mv {} $HOME/upload \; 
+      run: find . -name "osu.Game.Rulesets.*.dll" -print -exec mv {} $GITHUB_WORKSPACE/upload \; 
       working-directory: ./osu/osu.Desktop/out/
       
     - name: Adding hash.txt file
       run: bash hash.sh
-      working-directory: upload
+      working-directory: $GITHUB_WORKSPACE/upload
     - name: zip files
-      run: zip -0 -j HOME/rulesets.zip HOME/upload/*.dll 
+      run: zip -0 -j ~/rulesets.zip $GITHUB_WORKSPACE/upload/*.dll 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.0.0
       with:
-        path: HOME/rulesets.zip
+        path: $GITHUB_WORKSPACE/rulesets.zip
         name: dlls
     - name: Download a Build Artifact
       uses: actions/download-artifact@v3.0.0
