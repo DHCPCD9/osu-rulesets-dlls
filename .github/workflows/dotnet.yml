@@ -29,10 +29,13 @@ jobs:
     - name: Copy all rulesets to upload folder
       run: find . -name "osu.Game.Rulesets.*.dll" -print -exec mv {} ~/upload \; 
       working-directory: ./osu/osu.Desktop/out/
+      
+    - name: zip files
+      run: zip -r upload ~/rulesets.zip
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.0.0
       with:
-        path: ~/upload
+        path: ~/rulesets.zip
         name: dlls
     - name: Download a Build Artifact
       uses: actions/download-artifact@v3.0.0
