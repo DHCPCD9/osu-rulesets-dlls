@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-for f in upload/*.dll;
+for f in *.dll;
  do
  FILEHASH=$(md5sum $f | cut -f 1 -d " ");
 
