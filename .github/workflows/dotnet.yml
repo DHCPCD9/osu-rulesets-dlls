@@ -24,9 +24,13 @@ jobs:
       working-directory: ./osu
     - name: Build
       run: dotnet build --no-restore --output out/
-      working-directory: ./osu
+      working-directory: ./osu/osu.Desktop
+    - run: mkdir ~/upload
+    - name: Copy all rulesets to upload folder
+      run: find **/&& -name osu.Game.Rulesets.*.dll -print -exec mv {} ~/upload \;
+      working-directory: ./osu/osu.Desktop
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.0.0
       with:
-        path: out
+        path: ~/upload
     
