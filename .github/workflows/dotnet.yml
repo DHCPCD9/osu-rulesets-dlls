@@ -33,4 +33,13 @@ jobs:
       uses: actions/upload-artifact@v3.0.0
       with:
         path: ~/upload
+    - name: upload release
+    - uses: "marvinpinto/action-automatic-releases@latest"
+      with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: true
+          title: "Build ${{ GITHUB_SHA }}" 
+          files: |
+            *.dll
     
