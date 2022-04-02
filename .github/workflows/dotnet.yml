@@ -40,12 +40,6 @@ jobs:
       with:
         path: rulesets.zip
         name: dlls
-    - name: Download a Build Artifact
-      uses: actions/download-artifact@v3.0.0
-      with:
-        name: dlls
-        # Destination path
-        path: rulesets.zip
     - uses: "marvinpinto/action-automatic-releases@latest"
       with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
