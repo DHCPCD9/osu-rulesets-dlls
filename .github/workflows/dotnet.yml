@@ -32,7 +32,7 @@ jobs:
       
     - name: Adding hash.txt file
       run: bash hash.sh
-      working-directory: $GITHUB_WORKSPACE/upload
+      working-directory: upload
     - name: zip files
       run: zip -0 -j ~/rulesets.zip $GITHUB_WORKSPACE/upload/*.dll 
     - name: Upload a Build Artifact
